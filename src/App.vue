@@ -6,7 +6,7 @@ import { ref, provide } from 'vue'
 
 const theme = ref<string>('dark')
 
-function updateTheme() {
+function updateTheme(): void {
   theme.value = theme.value === 'dark' ? 'light' : 'dark'
 }
 

@@ -5,7 +5,8 @@ import emitter from '@/utils/emitter'
 import { useLocale } from 'vuetify'
 import { CHANGE_LOCALE } from '@/utils/Constants'
 
-const { theme, updateTheme } = inject('theme')
+const { theme, updateTheme } = inject('theme') as { theme: string; updateTheme: () => void }
+
 const { current } = useLocale()
 
 const headerBar = reactive({
