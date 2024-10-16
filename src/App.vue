@@ -4,8 +4,7 @@ import FooterBar from '@/components/common_components/FooterBar.vue'
 import ResumeLayout from '@/layout/ResumeLayout.vue'
 import { ref, provide } from 'vue'
 
-
-const theme = ref('dark')
+const theme = ref<string>('dark')
 
 function updateTheme() {
   theme.value = theme.value === 'dark' ? 'light' : 'dark'

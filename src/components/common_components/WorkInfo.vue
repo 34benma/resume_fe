@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 const props = defineProps({
   companyName: String,
   title: String,
   startYear: String,
   endYear: String,
-  desc: Array<String>
+  desc: Array<string>
 })
 </script>
 

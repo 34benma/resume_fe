@@ -1,14 +1,24 @@
-<script setup>
-import ColumnTitle from './common_components/ColumnTitle.vue'
-import { ref } from 'vue'
+<script setup lang="ts">
+import { reactive } from 'vue'
 
-const baseInfo = ref({ "tel": "176****6508", "sex": "男", "email": "wantedonline@outlook.com", "address": "中国.长沙" })
+import { CHANGE_LOCALE } from '@/utils/Constants'
+import emitter from '@/utils/emitter'
+
+const baseInfo = reactive({ "tel": "176****6508", "sex": "男", "email": "wantedonline@outlook.com", "address": "中国.长沙" })
+
+emitter.on(CHANGE_LOCALE, (value) => {
+  if (value === 'en') {
+    Object.assign(baseInfo, { "tel": "176****6508", "sex": "Male", "email": "wantedonline@outlook.com", "address": "ChangSha.China" })
+  }
+  if (value === 'zhHans') {
+    Object.assign(baseInfo, { "tel": "176****6508", "sex": "男", "email": "wantedonline@outlook.com", "address": "中国.长沙" })
+  }
+})
 
 
 </script>
 
 <template>
-  <!--基本信息-->
   <v-sheet class="d-flex flex-row flex-wrap justify-space-evenly align-space-around pb-4">
     <v-sheet class="flex-1-1-50">
       <v-icon icon="mdi-email" class="pa-2 ma-2"></v-icon>
