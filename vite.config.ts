@@ -6,7 +6,6 @@ import vuetify from 'vite-plugin-vuetify'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/resume_fe/',
   plugins: [vue(), vuetify()],
   define: {
     __APP_VERSION__: JSON.stringify('v1.0.0'),
