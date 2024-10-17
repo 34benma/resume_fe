@@ -38,6 +38,10 @@ function changeLocale() {
   emitter.emit(CHANGE_LOCALE, current.value)
 }
 
+function downloadResume() {
+  console.log("download pdf resume")
+}
+
 </script>
 
 <template>
