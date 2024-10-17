@@ -1,0 +1,38 @@
+name: Deploy with Github Pages
+
+on:
+  push:
+    branches: ['release']
+  pull_request:
+    branches: ['release']
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy to github pages
+        id: deployment
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: release
+          folder: docs
