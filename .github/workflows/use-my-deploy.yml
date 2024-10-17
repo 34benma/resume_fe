@@ -34,5 +34,5 @@ jobs:
         id: deployment
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: release
-          folder: docs
+          branch: gh-pages
+          folder: dist
