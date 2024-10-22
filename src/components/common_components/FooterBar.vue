@@ -7,6 +7,8 @@
   <v-footer :absolute="true" elevation="12" height="128">
     <v-container class="d-flex flex-row justify-center">
       <v-sheet>LouisWang &copy; 2014-{{ new Date().getFullYear() }}</v-sheet>
+      <v-sheet>关于 &middot; 版本</v-sheet>
+
     </v-container>
   </v-footer>
 

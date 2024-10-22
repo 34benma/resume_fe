@@ -3,18 +3,22 @@ import { reactive } from 'vue'
 
 import { CHANGE_LOCALE } from '@/utils/Constants'
 import emitter from '@/utils/emitter'
+import useResumeData from '@/hooks/useResumeData'
 
-const baseInfo = reactive({ "tel": "176****6508", "sex": "男", "email": "wantedonline@outlook.com", "address": "中国.长沙" })
+const { getBaseInfo } = useResumeData()
+
+const baseInfo = reactive({})
+const baseInfoZh = getBaseInfo('zhHans')
+Object.assign(baseInfo, baseInfoZh)
 
 emitter.on(CHANGE_LOCALE, (value) => {
   if (value === 'en') {
-    Object.assign(baseInfo, { "tel": "176****6508", "sex": "Male", "email": "wantedonline@outlook.com", "address": "ChangSha.China" })
+    Object.assign(baseInfo, getBaseInfo('en'))
   }
   if (value === 'zhHans') {
-    Object.assign(baseInfo, { "tel": "176****6508", "sex": "男", "email": "wantedonline@outlook.com", "address": "中国.长沙" })
+    Object.assign(baseInfo, baseInfoZh)
   }
 })
-
 
 </script>
 
@@ -30,7 +34,7 @@ emitter.on(CHANGE_LOCALE, (value) => {
     </v-sheet>
     <v-sheet class="flex-1-1-50">
       <v-icon icon="mdi-map-marker" class="pa-2 ma-2"></v-icon>
-      {{ baseInfo.address }}
+      <span v-html="baseInfo.address"></span>
     </v-sheet>
   </v-sheet>
 </template>

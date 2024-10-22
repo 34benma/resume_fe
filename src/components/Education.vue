@@ -6,7 +6,7 @@ import { reactive, ref } from 'vue'
 import { CHANGE_LOCALE } from '@/utils/Constants'
 import emitter from '@/utils/emitter'
 
-const columnTitle = ref('教育背景')
+const columnTitle = ref('教育经历')
 
 const educationZh = [{ "schoolName": "四川大学", "major": "信息管理与信息系统", "startYear": "2010.9", "endYear": "2014.6", "majorType": "全日制本科" }, { "schoolName": "四川大学", "major": "工商管理", "startYear": "2012.9", "endYear": "2014.6", "desc": "第二专业" }]
 
@@ -21,7 +21,7 @@ emitter.on(CHANGE_LOCALE, (value) => {
   }
 
   if (value === 'zhHans') {
-    columnTitle.value = '教育背景'
+    columnTitle.value = '教育经历'
     Object.assign(educationArray, educationZh)
   }
 })

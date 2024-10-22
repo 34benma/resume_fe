@@ -1,18 +1,24 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
 import louiswang from '@/assets/louiswang.jpeg'
 import { CHANGE_LOCALE } from '@/utils/Constants'
 import emitter from '@/utils/emitter'
+import useResumeData from '@/hooks/useResumeData'
+import { reactive } from 'vue'
 
 
-const title = reactive({ "name": "王  诚", "jobTitle": "全栈工程师" })
+const { getTitle } = useResumeData()
+
+const title = reactive({})
+
+const titleZh = getTitle('zh')
+Object.assign(title, titleZh)
 
 emitter.on(CHANGE_LOCALE, (value) => {
   if (value === 'en') {
-    Object.assign(title, { "name": "LouisWang", "jobTitle": "FullStack Engineer" })
+    Object.assign(title, getTitle('en'))
   }
   if (value === 'zhHans') {
-    Object.assign(title, { "name": "王 诚", "jobTitle": "全栈工程师" })
+    Object.assign(title, titleZh)
   }
 })
 
